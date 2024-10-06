@@ -8,9 +8,11 @@ from main import app
 from openai import OpenAI
 import json
 from openpyxl import load_workbook
+from dotenv import load_dotenv
 
-
-client = OpenAI(api_key="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")
+load_dotenv()
+key = os.getenv('AIKEY')
+client = OpenAI(api_key=key)
 
 
 @app.get("/")
