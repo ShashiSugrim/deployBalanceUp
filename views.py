@@ -10,9 +10,7 @@ import json
 from openpyxl import load_workbook
 
 
-f = open('key.json')
-key = json.load(f)["key"]
-client = OpenAI(api_key=key)
+client = OpenAI(api_key="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")
 
 
 @app.get("/")
