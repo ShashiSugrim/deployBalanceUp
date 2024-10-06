@@ -1,14 +1,17 @@
 from typing import Optional
-
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
 
+app = FastAPI(title="My FastAPI Application", description="A barebones FastAPI web application template")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allows all headers
+)
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+import views
